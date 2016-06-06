@@ -79,6 +79,10 @@ Released under the MIT license. See `LICENSE` for details.
 
 # Changelog
 
+## 1.4.1
+- Fixed arguments of module-level functions.
+- Fixed bug of execution with pipe.
+
 ## 1.4.0
 - Fixed required libraries.
 - Fixed order of output of `--print-available-runtimes`.
