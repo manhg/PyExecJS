@@ -92,7 +92,10 @@ class ExternalRuntime(AbstractRuntime):
             p = None
             try:
                 p = Popen(cmd, stdin=PIPE, stdout=PIPE, stderr=PIPE, cwd=self._cwd, universal_newlines=True)
-                stdoutdata, stderrdata = p.communicate(input=self._compile(source))
+                input = self._compile(source)
+                if six.PY2:
+                    input = input.encode(sys.getfilesystemencoding())
+                stdoutdata, stderrdata = p.communicate(input=input)
                 ret = p.wait()
             finally:
                 del p
