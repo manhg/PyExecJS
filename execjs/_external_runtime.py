@@ -153,7 +153,7 @@ class ExternalRuntime(AbstractRuntime):
             output_last_line = output.split("\n")[-2]
 
             if not output_last_line:
-                status = value = None
+                raise exceptions.ProgramError
             else:
                 ret = json.loads(output_last_line)
                 if len(ret) == 1:
@@ -163,7 +163,7 @@ class ExternalRuntime(AbstractRuntime):
             if status == "ok":
                 return value
             else:
-                raise exceptions.ProgramError(value)
+                raise exceptions.RuntimeError(value)
 
 
 def _is_windows():
