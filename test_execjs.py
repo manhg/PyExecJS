@@ -25,7 +25,7 @@ class RuntimeTestBase:
 
     def test_context_call_missing_function(self):
         context = self.runtime.compile("")
-        with self.assertRaises(execjs.ProgramError):
+        with self.assertRaises(execjs.Error):
             context.call("missing")
 
     def test_exec(self):
@@ -75,11 +75,11 @@ class RuntimeTestBase:
         self.assertTrue(self.runtime.exec_(code))
 
     def test_syntax_error(self):
-        with self.assertRaises(execjs.ProgramError):
+        with self.assertRaises(execjs.Error):
             self.runtime.exec_(")")
 
     def test_thrown_exception(self):
-        with self.assertRaises(execjs.RuntimeError):
+        with self.assertRaises(execjs.Error):
             self.runtime.exec_("throw 'hello'")
 
     def test_broken_substitutions(self):
