@@ -4,6 +4,7 @@ from collections import OrderedDict
 import execjs.runtime_names as runtime_names
 import execjs._external_runtime as external_runtime
 import execjs._pyv8runtime as pyv8runtime
+import execjs._dukpyruntime as dukpyruntime
 import execjs._exceptions as exceptions
 
 
@@ -64,6 +65,7 @@ def _find_runtime_by_name(name):
 
 _runtimes = []
 
+register(runtime_names.Dukpy,          dukpyruntime.DukpyRuntime())
 register(runtime_names.PyV8,           pyv8runtime.PyV8Runtime())
 register(runtime_names.Node,           external_runtime.node())
 register(runtime_names.JavaScriptCore, external_runtime.jsc())

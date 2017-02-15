@@ -1,3 +1,4 @@
+Dukpy          = "Dukpy"
 PyV8           = "PyV8"
 Node           = "Node"
 JavaScriptCore = "JavaScriptCore"
